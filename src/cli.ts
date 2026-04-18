@@ -114,8 +114,8 @@ program
   });
 
 program
-  .command("delete <id>")
-  .description("Delete a stored generation")
+  .command("delete [id]")
+  .description("Delete a stored generation, or all with --all")
   .option("--all", "Delete all generations")
   .action(async (id, opts) => {
     const { remove, removeAll } = await import("./commands/delete.js");
@@ -124,8 +124,11 @@ program
     try {
       if (opts.all) {
         removeAll();
-      } else {
+      } else if (id) {
         remove(id);
+      } else {
+        console.error(chalk.red("Provide an id or use --all"));
+        process.exit(1);
       }
     } finally {
       closeDb();

@@ -62,15 +62,14 @@ t2s speak path/to/file.txt
 
 ### Options
 
-```
-t2s speak --voice nova
-t2s speak --format wav
-t2s speak --speed 1.25
-t2s speak --model tts-1-hd
-t2s speak --provider openai
-t2s speak --out my-audio.mp3
-t2s speak --out audio/
-```
+| Command | Flag | Description | Default |
+|---------|------|-------------|---------|
+| `t2s speak --voice nova` | `--voice <name>` | Voice character: alloy, echo, fable, onyx, nova, shimmer | alloy |
+| `t2s speak --model tts-1-hd` | `--model <name>` | tts-1 is fast, tts-1-hd is higher quality | tts-1 |
+| `t2s speak --format wav` | `--format <fmt>` | Audio output format: mp3, opus, wav, flac | mp3 |
+| `t2s speak --speed 1.25` | `--speed <n>` | Playback speed multiplier: 0.25 (slowest) to 4.0 (fastest) | 1.0 |
+| `t2s speak --provider openai` | `--provider <name>` | TTS provider to use | openai |
+| `t2s speak --out my-audio.mp3` / `--out audio/` | `--out <path>` | Output file path or directory | output/ ||
 
 ### Translation
 
@@ -119,7 +118,14 @@ t2s delete --all
 ```
 t2s db stats
 t2s db list
+t2s delete --all
 ```
+
+`t2s db stats` shows generation count, database file size, and oldest/newest dates.
+
+`t2s db list` shows each source file that has been spoken, with generation count and last spoken date.
+
+`t2s delete --all` removes all stored generations.
 
 ### List voices
 
