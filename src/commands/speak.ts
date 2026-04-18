@@ -1,5 +1,5 @@
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { basename, extname, join, resolve } from "node:path";
+import { basename, extname, join, relative, resolve } from "node:path";
 import chalk from "chalk";
 import { insertGeneration } from "../lib/db.js";
 import { getApiKey, loadConfig } from "../lib/config.js";
@@ -80,7 +80,7 @@ async function speakFile(absPath: string, opts: SpeakOptions): Promise<void> {
     const translatedTextFile = resolveTranslatedTextFile(absPath, opts.out);
     writeFileSync(translatedTextFile, inputText, "utf-8");
     process.stdout.write("\n");
-    console.log(chalk.dim(`  ↳ translated text: ${translatedTextFile}`));
+    console.log(chalk.dim(`  ↳ translated text: ${relative(process.cwd(), translatedTextFile)}`));
     process.stdout.write(chalk.dim(`  ${basename(absPath)} - speaking...`));
   }
 
@@ -101,7 +101,8 @@ async function speakFile(absPath: string, opts: SpeakOptions): Promise<void> {
   });
 
   process.stdout.write("\n");
-  console.log(chalk.green(`  ✓ ${outFile}`) + chalk.dim(` [${generation.id.slice(0, 8)}]`));
+  const displayPath = relative(process.cwd(), outFile);
+  console.log(chalk.green(`  ✓ ${displayPath}`) + chalk.dim(` [${generation.id.slice(0, 8)}]`));
 }
 
 export async function speak(file: string | undefined, opts: SpeakOptions): Promise<void> {
