@@ -1,6 +1,6 @@
 {
   "name": "text2speak",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "text2speak CLI tool. Convert text files to audio using OpenAI TTS.",
   "repository": {
     "type": "git",
