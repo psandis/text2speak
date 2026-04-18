@@ -1,0 +1,18 @@
+{
+  "openai": {
+    "envKey": "OPENAI_API_KEY",
+    "defaultModel": "tts-1",
+    "defaultVoice": "alloy",
+    "defaultFormat": "mp3",
+    "models": ["tts-1", "tts-1-hd"],
+    "formats": ["mp3", "opus", "wav", "flac"],
+    "voices": {
+      "alloy": "Neutral, balanced",
+      "echo": "Male, clear",
+      "fable": "British, expressive",
+      "onyx": "Deep, authoritative",
+      "nova": "Female, warm",
+      "shimmer": "Female, soft"
+    }
+  }
+}

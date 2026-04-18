@@ -1,0 +1,1 @@
+One, two, three, four, five. Testing number recognition: 2026, 42, 3.14.

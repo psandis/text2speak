@@ -1,0 +1,67 @@
+{
+  "name": "text2speak",
+  "version": "0.1.0",
+  "description": "text2speak CLI tool. Convert text files to audio using OpenAI TTS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psandis/text2speak.git"
+  },
+  "homepage": "https://github.com/psandis/text2speak",
+  "type": "module",
+  "bin": {
+    "t2s": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "cli": "node dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "build": "tsup",
+    "test": "vitest run",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "text-to-speech",
+    "tts",
+    "audio",
+    "openai",
+    "cli",
+    "t2s",
+    "text2speak",
+    "openclaw"
+  ],
+  "author": "psandis",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "openai": "^6.34.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.6.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.4"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.12.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild",
+      "@biomejs/biome"
+    ]
+  }
+}
